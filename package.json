@@ -1,0 +1,19 @@
+{
+  "name": "task_manager_page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.1",
+    "react-router-dom": "^6.18.0"
+  },
+  "scripts": {
+    "client": "yarn --cwd client dev",
+    "server": " nodemon server/server.js",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
+  }
+}
