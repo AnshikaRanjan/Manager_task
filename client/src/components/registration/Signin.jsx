@@ -1,8 +1,10 @@
 import './registration.scss';
 import '../../styles/components/_button.scss';
 import './bg.css';
+import { useNavigate } from 'react-router-dom';
 
 const Signin = () => {
+	const navigate= useNavigate();
 	return (
 		<div className='signup-form'>
 			<div className='signup-form__wrapper'>
@@ -25,7 +27,7 @@ const Signin = () => {
 						/>
 					</div>
 					<div className='form-group'>
-						<button className='button'>Sign In</button>
+						<button className='button' onClick={() => navigate("/dashboard")}>Sign In</button>
 					</div>
 				</form>
 			</div>

@@ -5,11 +5,14 @@
     margin: 0;
     box-sizing:border-box ;
     font-size: "Poppins", sans-serif;
+    overflow: scroll;
 }
 
-body{
+.full{
     // background-color: #c4b2e1;
-    background-image: url('https://e1.pxfuel.com/desktop-wallpaper/421/267/desktop-wallpaper-%E2%88%9A-30-simple-backgrounds-powerpoint-background-simple-powerpoint-thumbnail.jpg');
+    background-image: url('https://png.pngtree.com/background/20210711/original/pngtree-flat-education-office-stationery-background-picture-image_1116195.jpg');
+    background-size: cover;
+    height: 500px;
 }
 
 h1{

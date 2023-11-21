@@ -1,7 +1,9 @@
 import './header.scss';
 import '../../styles/components/_button.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+	const navigate= useNavigate();
 	return (
 		<div>
 			<nav className='header'>
@@ -10,12 +12,12 @@ const Header = () => {
 					<h4>Task Manager</h4>
 				</div>
 				<nav className='header__menu'>
-					<a href='#home'>Home </a> 
-					<a href='#About'> About Us </a>
+					<a href='/'> Home </a> 
+					<a href='/about'> About Us </a>
 				</nav>
 				<div className='header__buttons'>
-					<button className="button"> Sign In </button>
-					<button className="button"> Sign Out </button>
+				<button className="button" onClick={() => navigate("/signin")}>Sign In</button>
+					<button className="button" onClick={() => navigate("/")}> Sign Out </button>
 				</div>
 			</nav>
 		</div>
