@@ -3,6 +3,7 @@ import '../../styles/components/_button.scss';
 import './bg.css';
 import { useNavigate } from 'react-router-dom';
 
+
 const Signin = () => {
 	const navigate= useNavigate();
 	return (
@@ -27,7 +28,7 @@ const Signin = () => {
 						/>
 					</div>
 					<div className='form-group'>
-						<button className='button' onClick={() => navigate("/dashboard")}>Sign In</button>
+						<button className='button'  onClick={() => navigate("/dashboard")} >Sign In</button>
 					</div>
 				</form>
 			</div>

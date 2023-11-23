@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import history from '../history';
 import { toast } from 'react-toastify';
 
 const initialUser = localStorage.getItem('auth')
@@ -48,32 +47,32 @@ export default authSlice.reducer;
 
 export const register = (user) => async (dispatch) => {
 	try {
-		const config = {
-			headers: {
-				'content-type': 'application/json',
-			},
-		};
-
-		const response = await axios.post(
-			'http://localhost:4000/auth/register',
-			user,
-			config
-		);
-
-		if (response) {
-			dispatch(registerSuccess(response.data));
-			toast.success('register successfull');
-			history.push('/signin');
-			window.location.reload();
-		} else {
-			dispatch(registerFailure());
-			toast.error('registration failed');
-		}
-	} catch (error) {
-		console.log(error);
+	  const config = {
+		headers: {
+		  'content-type': 'application/json',
+		},
+	  };
+  
+	  const response = await axios.post(
+		process.env.REACT_APP_API_URL + '/auth/register',
+		user,
+		config
+	  );
+  
+	  // Check if the response status code indicates success
+	  if (response.status >= 200 && response.status < 300) {
+		dispatch(registerSuccess(response.data));
+		toast.success('Registration successful');
+		window.location.reload();
+	  } else {
 		dispatch(registerFailure());
+		toast.error('Registration failed');
+	  }
+	} catch (error) {
+	  console.log(error);
+	  dispatch(registerFailure());
 	}
-};
+  };
 
 export const signin = (user) => async (dispatch) => {
 	console.log(user);
@@ -83,14 +82,12 @@ export const signin = (user) => async (dispatch) => {
 			password: user.password,
 		};
 		const response = await axios.post(
-			'http://localhost:4000/auth/signin',
+			process.env.REACT_APP_API_URL + '/auth/signin',
 			userData
 		);
 		if (response) {
 			localStorage.setItem('auth', JSON.stringify(response.data));
 			dispatch(loginSuccess(response.data));
-
-			history.push('/dashboard');
 			toast.success('login successfull');
 
 			window.location.reload();
@@ -102,3 +99,5 @@ export const signin = (user) => async (dispatch) => {
 		dispatch(loginFailure());
 	}
 };
+
+
